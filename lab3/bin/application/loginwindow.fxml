@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="321.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control_login">
+   <children>
+      <Button fx:id="btn_loginin" layoutX="122.0" layoutY="212.0" mnemonicParsing="false" onAction="#showDateTime" text="登陆" />
+      <Label layoutX="91.0" layoutY="92.0" text="用户" />
+      <Label layoutX="91.0" layoutY="130.0" text="密码" />
+      <Button fx:id="btn_signin" layoutX="212.0" layoutY="212.0" mnemonicParsing="false" text="注册" />
+      <TextField fx:id="text_user" layoutX="157.0" layoutY="88.0" promptText="username" />
+      <TextField fx:id="text_pw" layoutX="157.0" layoutY="126.0" promptText="password" />
+   </children>
+</AnchorPane>
