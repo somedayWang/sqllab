@@ -2,6 +2,7 @@ create table PRODUCT
 (
 	PID int primary key,
 	P_NAME char(30),
+	UNIT char(10),
 	P_PRICE int,
 	REMAINING int,
 );
