@@ -11,7 +11,7 @@
       <Label layoutX="91.0" layoutY="92.0" text="用户" />
       <Label layoutX="91.0" layoutY="130.0" text="密码" />
       <Button fx:id="btn_resignin" layoutX="212.0" layoutY="212.0" mnemonicParsing="false" onAction="#fun_register" text="注册" />
-      <TextField fx:id="text_user" layoutX="142.0" layoutY="88.0" prefHeight="25.0" prefWidth="176.0" promptText="请输入收银员ID或者预留电话" />
+      <TextField fx:id="text_user" layoutX="142.0" layoutY="88.0" prefHeight="25.0" prefWidth="176.0" promptText="请输入收银员ID或者姓名" />
       <PasswordField fx:id="text_pw" layoutX="142.0" layoutY="126.0" prefHeight="25.0" prefWidth="176.0" promptText="请输入密码" />
    </children>
 </AnchorPane>

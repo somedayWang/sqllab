@@ -17,13 +17,14 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btn_commitadd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#commit_input" prefHeight="25.0" prefWidth="200.0" text="确认" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="btn_commitadd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#commit_input" prefHeight="25.0" prefWidth="200.0" text="确认" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="商品名称" GridPane.rowIndex="1" />
             <Label maxWidth="1.7976931348623157E308" text="商品数量" GridPane.rowIndex="2" />
-            <Button fx:id="btn_reset" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reset_input" text="重新输入" GridPane.rowIndex="3" />
+            <Button fx:id="btn_reset" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reset_input" text="重新输入" GridPane.rowIndex="4" />
             <Label maxWidth="1.7976931348623157E308" text="商品编号" />
             <TextField fx:id="text_addpid" onKeyTyped="#autowithpid" GridPane.columnIndex="1" />
             <TextField fx:id="text_addpname" onKeyTyped="#autowithpname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -38,18 +39,20 @@
               </rowConstraints>
                <children>
                   <TextField fx:id="text_addnum" text="1" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="-" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2">
+                  <Button fx:id="btn_minus" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#minus" prefHeight="25.0" prefWidth="85.0" text="-" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="+" GridPane.columnIndex="1">
+                  <Button fx:id="btn_add" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="85.0" text="+" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
+            <Label text="剩余存货" GridPane.rowIndex="3" />
+            <Label fx:id="lab_num" text="lab_num" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
