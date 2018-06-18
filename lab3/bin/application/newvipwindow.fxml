@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="231.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control_newvip">
+   <children>
+      <Label layoutX="66.0" layoutY="59.0" text="会员姓名" />
+      <Label layoutX="66.0" layoutY="99.0" text="预留手机号" />
+      <TextField fx:id="text_name" layoutX="162.0" layoutY="55.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="text_phone" layoutX="162.0" layoutY="95.0" prefHeight="25.0" prefWidth="164.0" />
+      <Button fx:id="btn_commit" layoutX="162.0" layoutY="156.0" mnemonicParsing="false" onAction="#commit" text="确认" />
+      <Button fx:id="btn_cancel" layoutX="286.0" layoutY="156.0" mnemonicParsing="false" onAction="#cancel" text="取消" />
+      <Button fx:id="btn_revive" layoutX="25.0" layoutY="156.0" mnemonicParsing="false" onAction="#revive" text="激活过期会员卡" />
+   </children>
+</AnchorPane>

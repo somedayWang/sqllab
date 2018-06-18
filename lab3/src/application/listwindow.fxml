@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="367.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control_list">
+   <children>
+      <SplitPane dividerPositions="0.6" layoutY="-4.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="477.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="table_tab2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="477.0">
+                    <columns>
+                      <TableColumn fx:id="tab2_c1" prefWidth="52.0" text="序号" />
+                      <TableColumn fx:id="tab2_c2" prefWidth="140.0" text="商品名称" />
+                        <TableColumn fx:id="tab2_c3" prefWidth="88.0" text="商品单价" />
+                        <TableColumn fx:id="tab2_c4" prefWidth="73.0" text="商品数量" />
+                        <TableColumn fx:id="tab2_c5" prefWidth="123.0" text="商品总价" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="282.0">
+               <children>
+                  <Label fx:id="lab_cid" layoutX="110.0" layoutY="86.0" text="cid" />
+                  <Label fx:id="lab_ntime" layoutX="110.0" layoutY="14.0" text="time" />
+                  <Label fx:id="lab_vid" layoutX="110.0" layoutY="32.0" text="vid" />
+                  <Label layoutX="24.0" layoutY="49.0" prefHeight="17.0" prefWidth="48.0" text="总价" />
+                  <Label layoutX="24.0" layoutY="69.0" text="折后价格" />
+                  <Button fx:id="btn_commit" layoutX="223.0" layoutY="82.0" mnemonicParsing="false" onAction="#commitandupdate" text="确认" />
+                  <Button fx:id="btn_cancel" layoutX="286.0" layoutY="82.0" mnemonicParsing="false" text="取消" />
+                  <Label fx:id="lab_total" layoutX="110.0" layoutY="49.0" text="total" />
+                  <Label fx:id="lab_bufftotal" layoutX="110.0" layoutY="69.0" text="bufftotal" />
+                  <Label layoutX="24.0" layoutY="14.0" text="交易时间" />
+                  <Label layoutX="24.0" layoutY="86.0" prefHeight="17.0" prefWidth="48.0" text="售货员" />
+                  <Label layoutX="24.0" layoutY="32.0" prefHeight="17.0" prefWidth="48.0" text="会员号" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
