@@ -124,6 +124,11 @@ public class control_list implements Initializable {
 				crs.close();
 				control_cashwin.isvip = false;
 				JOptionPane.showMessageDialog(null, "交易完成，正在打印小票", "交易完成", JOptionPane.CLOSED_OPTION);
+				control_cashwin.tab1_list.clear();
+				control_cashwin.isvip = false;
+				Stage temp = (Stage) btn_commit.getScene().getWindow();
+				temp.close();
+				return;
 			}
 			System.out.println("OK");
 			if (control_cashwin.bufftotal >= 1000 && control_cashwin.isvip == false) {

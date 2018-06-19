@@ -1,7 +1,6 @@
 package application;
 
 import java.net.URL;
-import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +28,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 
 public class control_cashwin implements Initializable {
@@ -36,9 +41,9 @@ public class control_cashwin implements Initializable {
 	@FXML
 	private Button btn_addvip, btn_addpro, btn_reset, btn_commitadd, btn_resetadd, btn_resetone, btn_ifvip, btn_xiaban;
 	@FXML
-	private Button btn_insert, btn_update, btn_delete, btn_select;
+	private Button btn_select;
 	@FXML
-	public Label lab_cashier, lab_stime, lab_ntime, lab_total, lab_bufftotal;
+	public Label lab_cashier, lab_stime, lab_ntime, lab_total, lab_bufftotal, lab_back;
 	@FXML
 	private TextField text_addpid, text_addpname, text_addnum;
 	@FXML
@@ -72,6 +77,21 @@ public class control_cashwin implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		String url = "file:///C:/Users/qq834/Desktop/sql/lab3/src/pic/back5.jpg";
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					BackgroundImage myBI = new BackgroundImage(new Image(url, 820, 550, false, true),
+							BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+							BackgroundSize.DEFAULT);
+					lab_back.setBackground(new Background(myBI));
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("update failed");
+				}
+			}
+		});
 
 		// TODO (don't really need to do anything here).
 		inti_tab();
@@ -80,27 +100,27 @@ public class control_cashwin implements Initializable {
 		SimpleDateFormat ft = new SimpleDateFormat("MM.dd HH:mm:ss");
 		lab_stime.setText(ft.format(new Date()).trim());
 		// lab_ntime.setText(ft.format(new Date()).trim());
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					if (Main.cid <= 100) {
-						btn_insert.setDisable(false);
-						btn_update.setDisable(false);
-						btn_delete.setDisable(false);
-						btn_select.setDisable(false);
-					} else {
-						btn_insert.setDisable(true);
-						btn_update.setDisable(true);
-						btn_delete.setDisable(true);
-						btn_select.setDisable(true);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println("update failed");
-				}
-			}
-		});
+		// Platform.runLater(new Runnable() {
+		// @Override
+		// public void run() {
+		// try {
+		// if (Main.cid <= 100) {
+		// btn_insert.setDisable(false);
+		// btn_update.setDisable(false);
+		// btn_delete.setDisable(false);
+		// btn_select.setDisable(false);
+		// } else {
+		// btn_insert.setDisable(true);
+		// btn_update.setDisable(true);
+		// btn_delete.setDisable(true);
+		// btn_select.setDisable(true);
+		// }
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// System.out.println("update failed");
+		// }
+		// }
+		// });
 
 		// fresh_vip();
 		autoupdatetime();
@@ -266,55 +286,88 @@ public class control_cashwin implements Initializable {
 	}
 
 	// tab_cash
-	public void pro_insert(ActionEvent event) {
-		String pname, unit, price, remaining, total;
-		pname = new String(
-				JOptionPane.showInputDialog(null, "请输入录入商品的名称,注意不要超过15个字", "输入名称", JOptionPane.PLAIN_MESSAGE));
-		unit = new String(
-				JOptionPane.showInputDialog(null, "请输入录入商品的计量单位,注意不要超过5个字", "输入单位", JOptionPane.PLAIN_MESSAGE));
-		price = new String(JOptionPane.showInputDialog(null, "请输入录入商品的单价,使用英文符号 . 分隔小数部分和整数部分, 最大支持小数点后四位", "输入单价",
-				JOptionPane.PLAIN_MESSAGE));
-		remaining = new String(JOptionPane.showInputDialog(null, "请输入录入商品的存货量", "输入存货", JOptionPane.PLAIN_MESSAGE));
-		total = "商品名称：" + pname + "\n商品单位：" + unit + "\n商品单位：" + price + "\n商品单位：" + remaining;
-		if (JOptionPane.showConfirmDialog(null, total, "确认以上信息是否正确", JOptionPane.OK_CANCEL_OPTION) == 0) {
-			System.out.println(total);
-			try {
-				CallableStatement crs = Main.conn.prepareCall("{? = call dbo.insertpro(?,?,?,?)}");
-				crs.registerOutParameter(1, java.sql.Types.INTEGER);
-				crs.setString(2, pname.trim());
-				crs.setString(3, unit.trim());
-				crs.setString(4, price.trim());
-				crs.setString(5, remaining.trim());
-				crs.execute();
-				if (crs.getInt(1) <= 0) {
-					System.out.println("vid failed");
-					JOptionPane.showMessageDialog(null,
-							"录入失败,该商品名称和单位已存在,对应商品号为" + Integer.toString(crs.getInt(1) + 100000), "录入失败",
-							JOptionPane.ERROR_MESSAGE);
-				} else {
-					JOptionPane.showMessageDialog(null, "录入成功，商品号为" + Integer.toString(crs.getInt(1)), "录入成功",
-							JOptionPane.PLAIN_MESSAGE);
-				}
-				crs.close();
+	// public void pro_insert(ActionEvent event) {
+	// String pname, unit, price, remaining, total;
+	// pname = new String(
+	// JOptionPane.showInputDialog(null, "请输入录入商品的名称,注意不要超过15个字", "输入名称",
+	// JOptionPane.PLAIN_MESSAGE));
+	// unit = new String(
+	// JOptionPane.showInputDialog(null, "请输入录入商品的计量单位,注意不要超过5个字", "输入单位",
+	// JOptionPane.PLAIN_MESSAGE));
+	// price = new String(JOptionPane.showInputDialog(null, "请输入录入商品的单价,使用英文符号 .
+	// 分隔小数部分和整数部分, 最大支持小数点后四位", "输入单价",
+	// JOptionPane.PLAIN_MESSAGE));
+	// remaining = new String(JOptionPane.showInputDialog(null, "请输入录入商品的存货量",
+	// "输入存货", JOptionPane.PLAIN_MESSAGE));
+	// total = "商品名称：" + pname + "\n商品单位：" + unit + "\n商品单位：" + price + "\n商品单位：" +
+	// remaining;
+	// if (JOptionPane.showConfirmDialog(null, total, "确认以上信息是否正确",
+	// JOptionPane.OK_CANCEL_OPTION) == 0) {
+	// System.out.println(total);
+	// try {
+	// CallableStatement crs = Main.conn.prepareCall("{? = call
+	// dbo.insertpro(?,?,?,?)}");
+	// crs.registerOutParameter(1, java.sql.Types.INTEGER);
+	// crs.setString(2, pname.trim());
+	// crs.setString(3, unit.trim());
+	// crs.setString(4, price.trim());
+	// crs.setString(5, remaining.trim());
+	// crs.execute();
+	// if (crs.getInt(1) <= 0) {
+	// System.out.println("vid failed");
+	// JOptionPane.showMessageDialog(null,
+	// "录入失败,该商品名称和单位已存在,对应商品号为" + Integer.toString(crs.getInt(1) + 100000), "录入失败",
+	// JOptionPane.ERROR_MESSAGE);
+	// } else {
+	// JOptionPane.showMessageDialog(null, "录入成功，商品号为" +
+	// Integer.toString(crs.getInt(1)), "录入成功",
+	// JOptionPane.PLAIN_MESSAGE);
+	// }
+	// crs.close();
+	//
+	// } catch (Exception e) {
+	// // TODO: handle exception
+	// e.printStackTrace();
+	// }
+	//
+	// }
+	// }
 
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-
-		}
-	}
-
-	public void pro_update(ActionEvent event) {
-
-	}
-
-	public void pro_delete(ActionEvent event) {
-
-	}
+	// public void pro_update(ActionEvent event) {
+	//
+	// }
+	//
+	// public void pro_delete(ActionEvent event) {
+	//
+	// }
 
 	public void pro_select(ActionEvent event) {
-
+		fresh_pro();
+		String cid, cname;
+		if (JOptionPane.showConfirmDialog(null, "是否选择id查询，否则为名称查询", "选择查询方式", JOptionPane.OK_OPTION) == 0) {
+			cid = new String(JOptionPane.showInputDialog(null, "请输入商品id", "输入ID", JOptionPane.PLAIN_MESSAGE));
+			// table_tab1.getSelectionModel().select(0);
+			for (int i = 0; i < tab2_list.size(); i++) {
+				if (tab2_list.get(i).getCA().compareTo(cid.trim()) == 0) {
+					table_tab2.getSelectionModel().select(i);
+					return;
+				}
+			}
+			JOptionPane.showMessageDialog(null, "未找到对应id的商品", "查找失败", JOptionPane.ERROR_MESSAGE);
+			return;
+		} else {
+			cname = new String(
+					JOptionPane.showInputDialog(null, "请输入商品名称,注意不要超过15个字", "输入名称", JOptionPane.PLAIN_MESSAGE));
+			// table_tab1.getSelectionModel().select(0);
+			for (int i = 0; i < tab2_list.size(); i++) {
+				if (tab2_list.get(i).getCB().trim().compareTo(cname.trim()) == 0) {
+					table_tab2.getSelectionModel().select(i);
+					return;
+				}
+			}
+			JOptionPane.showMessageDialog(null, "未找到对应名称的商品", "查找失败", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 	}
 
 	public void reset_product(ActionEvent event) {
@@ -355,7 +408,7 @@ public class control_cashwin implements Initializable {
 			win_addpro = new Stage();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("newvipwindow.fxml"));
 			Parent root = loader.load();
-			win_addpro.setTitle("A new VIP");
+			win_addpro.setTitle("收款50元，办理新VIP或激活已有失效VIP");
 			win_addpro.setScene(new Scene(root));
 			Main.money = 1;
 			win_addpro.show();
@@ -480,30 +533,30 @@ public class control_cashwin implements Initializable {
 	public void fresh_pro() {
 		String sql;
 		sql = "select * from PRODUCT";
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					ResultSet rs = Main.stmt.executeQuery(sql);
-					if (rs.next() == false)
-						System.out.println("the product table is null");
-					else {
-						tab2_list.clear();
-						tab2_list.add(new sixproperty(rs.getString("PID"), rs.getString("P_NAME"), rs.getString("UNIT"),
-								rs.getString("P_PRICE"), rs.getString("REMAINING"), " "));
-						while (rs.next()) {
-							tab2_list.add(new sixproperty(rs.getString("PID"), rs.getString("P_NAME"),
-									rs.getString("UNIT"), rs.getString("P_PRICE"), rs.getString("REMAINING"), " "));
-						}
-						// table_tab2.setItems(tab2_list);
-					}
-					rs.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println("fresh failed");
+		// Platform.runLater(new Runnable() {
+		// @Override
+		// public void run() {
+		try {
+			ResultSet rs = Main.stmt.executeQuery(sql);
+			if (rs.next() == false)
+				System.out.println("the product table is null");
+			else {
+				tab2_list.clear();
+				tab2_list.add(new sixproperty(rs.getString("PID"), rs.getString("P_NAME"), rs.getString("UNIT"),
+						rs.getString("P_PRICE"), rs.getString("REMAINING"), " "));
+				while (rs.next()) {
+					tab2_list.add(new sixproperty(rs.getString("PID"), rs.getString("P_NAME"), rs.getString("UNIT"),
+							rs.getString("P_PRICE"), rs.getString("REMAINING"), " "));
 				}
+				// table_tab2.setItems(tab2_list);
 			}
-		});
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("fresh failed");
+		}
+		// }
+		// });
 	}
 
 	// tab_vip

@@ -9,6 +9,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control_cashwin">
    <children>
+      <Label fx:id="lab_back" prefHeight="500.0" prefWidth="830.0" />
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="tab_cash" text="收银界面">
@@ -111,9 +112,6 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="btn_insert" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_insert" text="录入" />
-                              <Button fx:id="btn_update" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_update" text="修改" GridPane.columnIndex="1" />
-                              <Button fx:id="btn_delete" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_delete" text="删除" GridPane.columnIndex="2" />
                               <Button fx:id="btn_select" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_select" text="查询" GridPane.columnIndex="3" />
                            </children>
                         </GridPane>
@@ -124,9 +122,6 @@
             <Tab fx:id="tab_vip" onSelectionChanged="#fresh_vip" text="会员清单">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <bottom>
-                        <Button fx:id="btn_freshvip" mnemonicParsing="false" onAction="#fresh_vip" text="查询会员记录" BorderPane.alignment="CENTER" />
-                     </bottom>
                      <center>
                         <TableView fx:id="table_tab3" prefHeight="446.0" prefWidth="722.0" BorderPane.alignment="CENTER">
                            <columns>
@@ -148,9 +143,6 @@
             <Tab fx:id="tab_log" onSelectionChanged="#fresh_log" text="流水清单">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <bottom>
-                        <Button mnemonicParsing="false" text="导出流水信息" BorderPane.alignment="CENTER" />
-                     </bottom>
                      <center>
                         <TableView fx:id="table_tab4" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <columns>

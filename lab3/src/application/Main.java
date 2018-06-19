@@ -23,9 +23,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("loginwindow.fxml"));
-			primaryStage.setTitle("Welcome to someday's cashier system!");
+			primaryStage.setTitle("»¶Ó­¹¤×÷");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setResizable(false);
+			primaryStage.setHeight(325);
+			primaryStage.setWidth(375);
 			primaryStage.show();
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			final String USER = "root";

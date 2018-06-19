@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 
 public class control_login implements Initializable {
@@ -23,12 +31,29 @@ public class control_login implements Initializable {
 	private Button btn_loginin, btn_signin;
 	@FXML
 	private TextField text_user, text_pw;
-
+	@FXML
+	private Label lab_back;
 	static Stage win_cash, win_register;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Main.money = 1;
+		String url = "file:///C:/Users/qq834/Desktop/sql/lab3/src/pic/back5.jpg";
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					BackgroundImage myBI = new BackgroundImage(new Image(url, 370, 375, false, true),
+							BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+							BackgroundSize.DEFAULT);
+					lab_back.setBackground(new Background(myBI));
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("update failed");
+				}
+			}
+		});
+
 	}
 
 	public void towin_cash() {

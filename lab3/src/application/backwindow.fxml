@@ -43,8 +43,8 @@
                            <children>
                               <Button fx:id="btn_insertca" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ca_insert" prefHeight="26.0" prefWidth="115.0" text="添加收银员" />
                               <Button fx:id="btn_selectca" mnemonicParsing="false" onAction="#ca_select" prefHeight="25.0" prefWidth="255.0" text="查询收银员" GridPane.columnIndex="1" />
-                              <Button fx:id="btn_updateca" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ca_update" prefHeight="26.0" prefWidth="115.0" text="修改选中收银员" GridPane.columnIndex="2" />
-                              <Button fx:id="btn_deleteca" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ca_delete" prefHeight="26.0" prefWidth="115.0" text="删除选中收银员" GridPane.columnIndex="3" />
+                              <Button fx:id="btn_updateca" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ca_update" prefHeight="26.0" prefWidth="115.0" text="修改收银员" GridPane.columnIndex="2" />
+                              <Button fx:id="btn_deleteca" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ca_delete" prefHeight="26.0" prefWidth="115.0" text="删除收银员" GridPane.columnIndex="3" />
                            </children>
                         </GridPane>
                      </bottom>
@@ -82,7 +82,7 @@
                            <children>
                               <Button fx:id="btn_insertpro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_insert" text="添加商品" />
                               <Button fx:id="btn_selectpro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_select" text="查询商品" GridPane.columnIndex="1" />
-                              <Button fx:id="btn_updatepro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_update" text="更新商品" GridPane.columnIndex="2" />
+                              <Button fx:id="btn_updatepro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_update" text="修改商品" GridPane.columnIndex="2" />
                               <Button fx:id="btn_deletepro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pro_delete" text="删除商品" GridPane.columnIndex="3" />
                            </children>
                         </GridPane>
@@ -120,10 +120,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="录入会员" />
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="查询会员" GridPane.columnIndex="1" />
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="修改会员" GridPane.columnIndex="2" />
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="删除会员" GridPane.columnIndex="3" />
+                              <Button fx:id="btn_insertvip" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#vip_insert" text="录入会员" />
+                              <Button fx:id="btn_selectvip" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#vip_select" text="查询会员" GridPane.columnIndex="1" />
+                              <Button fx:id="btn_updatevip" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="修改会员" GridPane.columnIndex="2" />
+                              <Button fx:id="btn_deletevip" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#vip_delete" text="删除会员" GridPane.columnIndex="3" />
                            </children>
                         </GridPane>
                      </bottom>
@@ -149,6 +149,38 @@
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tab_cash1" onSelectionChanged="#fresh_clogs" text="盘存界面">
+               <content>
+                  <BorderPane prefHeight="430.0" prefWidth="625.0">
+                     <bottom>
+                        <GridPane BorderPane.alignment="CENTER">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="187.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="629.0" minWidth="10.0" prefWidth="214.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="629.0" minWidth="10.0" prefWidth="204.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="629.0" minWidth="10.0" prefWidth="198.0" />
+                           </columnConstraints>
+                        </GridPane>
+                     </bottom>
+                     <center>
+                        <TableView fx:id="table_tab5" editable="true" prefHeight="357.0" prefWidth="598.0" BorderPane.alignment="CENTER">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <columns>
+                              <TableColumn fx:id="tab5_c1" minWidth="0.0" prefWidth="53.0" text="收银员编号" />
+                              <TableColumn fx:id="tab5_c2" prefWidth="98.0" text="上班时间" />
+                              <TableColumn fx:id="tab5_c3" prefWidth="136.0" text="下班时间" />
+                              <TableColumn fx:id="tab5_c4" prefWidth="88.0" text="商品编号" />
+                              <TableColumn fx:id="tab5_c5" prefWidth="61.0" text="商品名称" />
+                              <TableColumn fx:id="tab5_c6" prefWidth="131.0" text="商品数量" />
+                              <TableColumn fx:id="tab5_c7" prefWidth="131.0" text="商品价格" />
+                           </columns>
                         </TableView>
                      </center>
                   </BorderPane>

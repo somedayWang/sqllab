@@ -64,6 +64,8 @@ public class control_back implements Initializable {
 	@FXML
 	public TableView<sixproperty> table_tab1;
 	@FXML
+	public TableView<eightproperty> table_tab5;
+	@FXML
 	private TableColumn<sixproperty, String> tab1_c1, tab1_c2, tab1_c3, tab1_c4, tab1_c5, tab1_c6;
 	@FXML
 	private TableColumn<sixproperty, String> tab2_c1, tab2_c2, tab2_c3, tab2_c4, tab2_c5;
@@ -71,6 +73,9 @@ public class control_back implements Initializable {
 	private TableColumn<sixproperty, String> tab3_c1, tab3_c2, tab3_c3, tab3_c4, tab3_c5, tab3_c6;
 	@FXML
 	private TableColumn<sixproperty, String> tab4_c1, tab4_c2, tab4_c3, tab4_c4, tab4_c5, tab4_c6, tab4_c7, tab4_c8;
+
+	@FXML
+	private TableColumn<eightproperty, String> tab5_c1, tab5_c2, tab5_c3, tab5_c4, tab5_c5, tab5_c6, tab5_c7, tab5_c8;
 
 	// static control_input controlofinput;
 	// the entry of the class
@@ -86,6 +91,7 @@ public class control_back implements Initializable {
 	static ObservableList<sixproperty> tab2_list = FXCollections.observableArrayList();
 	static ObservableList<sixproperty> tab3_list = FXCollections.observableArrayList();
 	static ObservableList<sixproperty> tab4_list = FXCollections.observableArrayList();
+	static ObservableList<eightproperty> tab5_list = FXCollections.observableArrayList();
 	// static List<String> list;
 
 	@Override
@@ -174,6 +180,17 @@ public class control_back implements Initializable {
 		// tab4_c7.setCellValueFactory(new PropertyValueFactory<>("CG"));
 		// tab4_c8.setCellValueFactory(new PropertyValueFactory<>("CH"));
 		table_tab4.setItems(tab4_list);
+
+		table_tab5.setEditable(false);
+		tab5_c1.setCellValueFactory(new PropertyValueFactory<>("CA"));
+		tab5_c2.setCellValueFactory(new PropertyValueFactory<>("CB"));
+		tab5_c3.setCellValueFactory(new PropertyValueFactory<>("CC"));
+		tab5_c4.setCellValueFactory(new PropertyValueFactory<>("CD"));
+		tab5_c5.setCellValueFactory(new PropertyValueFactory<>("CE"));
+		tab5_c6.setCellValueFactory(new PropertyValueFactory<>("CF"));
+		tab5_c7.setCellValueFactory(new PropertyValueFactory<>("CG"));
+		// tab5_c8.setCellValueFactory(new PropertyValueFactory<>("CH"));
+		table_tab5.setItems(tab5_list);
 
 	}
 
@@ -456,7 +473,7 @@ public class control_back implements Initializable {
 	@FXML
 	void ca_update(ActionEvent event) {
 		String cid, cname, cpw, cphone, total;
-		if (JOptionPane.showConfirmDialog(null, "是否对已选中行商品进行操作，否则为输入对应id操作", "选择目标", JOptionPane.OK_OPTION) == 0) {
+		if (JOptionPane.showConfirmDialog(null, "是否对已选中行收银员进行操作，否则为输入对应id操作", "选择目标", JOptionPane.OK_OPTION) == 0) {
 			if (table_tab1.getSelectionModel().getSelectedCells().size() != 0) {
 				cid = tab1_list.get(table_tab1.getSelectionModel().getSelectedCells().get(0).getRow()).getCA().trim();
 				cname = new String(
@@ -486,7 +503,7 @@ public class control_back implements Initializable {
 				JOptionPane.showMessageDialog(null, "未选中任何行", "选择错误", JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
-			cid = new String(JOptionPane.showInputDialog(null, "请输入修改商品的id", "输入id", JOptionPane.PLAIN_MESSAGE));
+			cid = new String(JOptionPane.showInputDialog(null, "请输入修改收银员的id", "输入id", JOptionPane.PLAIN_MESSAGE));
 			for (int i = 0; i < tab1_list.size(); i++) {
 				if (tab1_list.get(i).getCA().compareTo(cid.trim()) == 0) {
 					cname = new String(JOptionPane.showInputDialog(null, "请输入收银员名称,注意不要超过15个字", "输入名称",
@@ -525,7 +542,7 @@ public class control_back implements Initializable {
 	@FXML
 	void ca_delete(ActionEvent event) {
 		String cid, cname, cpw, cphone, total;
-		if (JOptionPane.showConfirmDialog(null, "是否对已选中行商品进行操作，否则为输入对应id操作", "选择目标", JOptionPane.OK_OPTION) == 0) {
+		if (JOptionPane.showConfirmDialog(null, "是否对已选中行收银员进行操作，否则为输入对应id操作", "选择目标", JOptionPane.OK_OPTION) == 0) {
 			if (table_tab1.getSelectionModel().getSelectedCells().size() != 0) {
 				cid = tab1_list.get(table_tab1.getSelectionModel().getSelectedCells().get(0).getRow()).getCA().trim();
 				cname = tab1_list.get(table_tab1.getSelectionModel().getSelectedCells().get(0).getRow()).getCB().trim();
@@ -558,7 +575,7 @@ public class control_back implements Initializable {
 				JOptionPane.showMessageDialog(null, "未选中任何行", "选择错误", JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
-			cid = new String(JOptionPane.showInputDialog(null, "请输入删除商品的id", "输入id", JOptionPane.PLAIN_MESSAGE));
+			cid = new String(JOptionPane.showInputDialog(null, "请输入删除收银员的id", "输入id", JOptionPane.PLAIN_MESSAGE));
 			for (int i = 0; i < tab1_list.size(); i++) {
 				if (tab1_list.get(i).getCA().compareTo(cid.trim()) == 0) {
 					cname = tab1_list.get(i).getCB().trim();
@@ -589,9 +606,29 @@ public class control_back implements Initializable {
 					return;
 				}
 			}
-			JOptionPane.showMessageDialog(null, "未找到对应id的商品", "查找失败", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "未找到对应id的收银员", "查找失败", JOptionPane.ERROR_MESSAGE);
 			fresh_cashier();
 		}
+
+	}
+
+	@FXML
+	void vip_insert(ActionEvent event) {
+
+	}
+
+	@FXML
+	void vip_update(ActionEvent event) {
+
+	}
+
+	@FXML
+	void vip_select(ActionEvent event) {
+
+	}
+
+	@FXML
+	void vip_delete(ActionEvent event) {
 
 	}
 
@@ -769,5 +806,90 @@ public class control_back implements Initializable {
 		}
 		// }
 		// });
+	}
+
+	public void fresh_clogs() {
+		String sql;
+		sql = "select * from CLOGS " + " order by CID,W_DATETIME,PID";
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					// int vipnum = 0, vipmoney = 0;
+					// double money;
+					ResultSet rs = Main.stmt.executeQuery(sql);
+					if (rs.next() == false)
+						System.out.println("the product table is null");
+					else {
+						tab5_list.clear();
+						if (rs.getString("L_DATETIME") != null) {
+							if (rs.getString("PID") != null) {
+								tab5_list.add(new eightproperty(rs.getString("CID"),
+										rs.getString("W_DATETIME").substring(0, 19),
+										rs.getString("L_DATETIME").substring(0, 19), rs.getString("PID").trim(),
+										rs.getString("P_NAME").trim(), rs.getString("P_NUM"), rs.getString("P_PRICE"),
+										" "));
+							} else {
+								tab5_list.add(new eightproperty(rs.getString("CID"),
+										rs.getString("W_DATETIME").substring(0, 19),
+										rs.getString("L_DATETIME").substring(0, 19), " ", rs.getString("P_NAME").trim(),
+										rs.getString("P_NUM"), rs.getString("P_PRICE"), " "));
+							}
+
+						} else {
+							if (rs.getString("PID") != null) {
+								tab5_list.add(new eightproperty(rs.getString("CID"),
+										rs.getString("W_DATETIME").substring(0, 19),
+										rs.getString("L_DATETIME").substring(0, 19), rs.getString("PID").trim(),
+										rs.getString("P_NAME").trim(), rs.getString("P_NUM"), rs.getString("P_PRICE"),
+										" "));
+							} else {
+								tab5_list.add(new eightproperty(rs.getString("CID"),
+										rs.getString("W_DATETIME").substring(0, 19),
+										rs.getString("L_DATETIME").substring(0, 19), " ", rs.getString("P_NAME").trim(),
+										rs.getString("P_NUM"), rs.getString("P_PRICE"), " "));
+							}
+						}
+						while (rs.next()) {
+							if (rs.getString("L_DATETIME") != null) {
+								if (rs.getString("PID") != null) {
+									tab5_list.add(new eightproperty(rs.getString("CID"),
+											rs.getString("W_DATETIME").substring(0, 19),
+											rs.getString("L_DATETIME").substring(0, 19), rs.getString("PID").trim(),
+											rs.getString("P_NAME").trim(), rs.getString("P_NUM"),
+											rs.getString("P_PRICE"), " "));
+								} else {
+									tab5_list.add(new eightproperty(rs.getString("CID"),
+											rs.getString("W_DATETIME").substring(0, 19),
+											rs.getString("L_DATETIME").substring(0, 19), " ",
+											rs.getString("P_NAME").trim(), rs.getString("P_NUM"),
+											rs.getString("P_PRICE"), " "));
+								}
+
+							} else {
+								if (rs.getString("PID") != null) {
+									tab5_list.add(new eightproperty(rs.getString("CID"),
+											rs.getString("W_DATETIME").substring(0, 19),
+											rs.getString("L_DATETIME").substring(0, 19), rs.getString("PID").trim(),
+											rs.getString("P_NAME").trim(), rs.getString("P_NUM"),
+											rs.getString("P_PRICE"), " "));
+								} else {
+									tab5_list.add(new eightproperty(rs.getString("CID"),
+											rs.getString("W_DATETIME").substring(0, 19),
+											rs.getString("L_DATETIME").substring(0, 19), " ",
+											rs.getString("P_NAME").trim(), rs.getString("P_NUM"),
+											rs.getString("P_PRICE"), " "));
+								}
+							}
+						}
+						// table_tab2.setItems(tab2_list);
+					}
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("fresh failed");
+				}
+			}
+		});
 	}
 }
