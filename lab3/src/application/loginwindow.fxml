@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -14,5 +15,10 @@
       <Button fx:id="btn_resignin" layoutX="203.0" layoutY="212.0" mnemonicParsing="false" onAction="#fun_register" text="注册" />
       <TextField fx:id="text_user" layoutX="124.0" layoutY="88.0" prefHeight="25.0" prefWidth="176.0" promptText="请输入收银员ID或者姓名" />
       <PasswordField fx:id="text_pw" layoutX="124.0" layoutY="126.0" prefHeight="25.0" prefWidth="176.0" promptText="请输入密码" />
+      <Label layoutX="91.0" layoutY="24.0" prefHeight="49.0" prefWidth="208.0" text="旺财超市收银系统">
+         <font>
+            <Font name="Microsoft JhengHei UI Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

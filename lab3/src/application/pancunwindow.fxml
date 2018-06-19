@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="367.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control_pancun">
+<AnchorPane prefHeight="367.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control_pancunbuxiaban">
    <children>
       <SplitPane dividerPositions="0.6" layoutY="-4.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="477.0">
         <items>
@@ -31,22 +31,20 @@
                   <Label fx:id="lab_wtime" layoutX="133.0" layoutY="14.0" text="time" />
                   <Label layoutX="262.0" layoutY="49.0" prefHeight="17.0" prefWidth="48.0" text="销售总额" />
                   <Label layoutX="24.0" layoutY="69.0" text="添加或激活会员数" />
-                  <Button fx:id="btn_xiaban" layoutX="124.0" layoutY="95.0" mnemonicParsing="false" onAction="#xiaban" text="我下班了" />
-                  <Button fx:id="btn_huanban" layoutX="296.0" layoutY="95.0" mnemonicParsing="false" onAction="#huanban" text="你没下班" />
                   <Label fx:id="lab_trademoney" layoutX="348.0" layoutY="49.0" text="total" />
                   <Label fx:id="lab_vipnum" layoutX="133.0" layoutY="68.0" text="bufftotal" />
                   <Label layoutX="24.0" layoutY="14.0" text="上班时间" />
                   <Label layoutX="24.0" layoutY="31.0" prefHeight="17.0" prefWidth="48.0" text="售货员ID" />
-                  <Label layoutX="262.0" layoutY="14.0" text="下班时间" />
+                  <Label layoutX="262.0" layoutY="14.0" text=" " />
                   <Label fx:id="lab_ltime" layoutX="348.0" layoutY="14.0" text="time" />
                   <Label layoutX="24.0" layoutY="49.0" text="交易单数" />
                   <Label fx:id="lab_tradenum" layoutX="133.0" layoutY="48.0" text="num" />
-                  <Label layoutX="82.0" layoutY="99.0" text="下班" />
-                  <Label layoutX="250.0" layoutY="99.0" text="换班" />
-                  <Label layoutX="262.0" layoutY="69.0" text="会员卡销售" />
+                  <Label layoutX="262.0" layoutY="68.0" text="会员卡销售" />
                   <Label fx:id="lab_vipmoney" layoutX="348.0" layoutY="69.0" text="num" />
                   <Label layoutX="262.0" layoutY="31.0" prefHeight="17.0" prefWidth="64.0" text="售货员姓名" />
                   <Label fx:id="lab_cname" layoutX="348.0" layoutY="31.0" text="cid" />
+                  <Button fx:id="btn_close" layoutX="296.0" layoutY="96.0" mnemonicParsing="false" onAction="#close" text="确认" />
+                  <Button layoutX="107.0" layoutY="96.0" mnemonicParsing="false" text="导出盘存信息" />
                </children>
             </AnchorPane>
         </items>

@@ -668,4 +668,20 @@ public class control_cashwin implements Initializable {
 			System.out.println("ifvip failed");
 		}
 	}
+
+	@FXML
+	void pancunwindow(ActionEvent event) {
+		try {
+			// control_newvip.money = 0;
+			win_addpro = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("pancunwindow.fxml"));
+			Parent root = loader.load();
+			win_addpro.setTitle("≈Ã¥Ê–≈œ¢");
+			win_addpro.setScene(new Scene(root));
+			win_addpro.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ifvip failed");
+		}
+	}
 }
